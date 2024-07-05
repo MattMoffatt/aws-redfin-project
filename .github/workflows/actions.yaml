@@ -9,28 +9,22 @@ on:
 
 jobs:
   run-notebook:
-
     build:
-
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+        API_KEY: ${{ secrets.REDFIN_RAPIDAPI_KEY }}
       runs-on: windows-latest
-
       steps:
         # locate current repo
-        - uses: actions/checkout@4
-
-        - name: set up Python 3.11.5
-          - uses: actions/setup-python@v5
-            with:
-              python-version: '3.11.5'
-              cache: 'pip' 
-
-        # install dependencies
-        - run: pip install -r requirements.txt          
-
-        # run notebook
-      - name: redfin notebook
-        run: jupyter execute Redfin_Analysis.ipynb
-
-      
-
-
+      uses: actions/checkout@4
+      name: set up Python 3.11.5
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11.5'
+          cache: 'pip' 
+      # install dependencies
+      run: pip install -r requirements.txt          
+      # run notebook
+      name: redfin notebook
+      run: jupyter execute Redfin_Analysis.ipynb
