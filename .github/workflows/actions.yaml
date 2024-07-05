@@ -1,0 +1,36 @@
+name: redfin-etl
+
+# when to run workflow - should happen on new pushes and once a week on saturdays
+on:
+  workflow_dispatch:
+  push:
+  schedule:
+    - cron: '0 0 * * 6'
+
+jobs:
+  run-notebook:
+
+    build:
+
+      runs-on: windows-latest
+
+      steps:
+        # locate current repo
+        - uses: actions/checkout@4
+
+        # set up python installation
+        - name: set up Python 3.11.5
+          - uses: actions/setup-python@v5
+            with:
+              python-version: '3.11.5'
+              cache: 'pip' 
+
+        # install dependencies
+        - run: pip install -r requirements.txt          
+
+        # run notebook
+      - name: redfin notebook
+        run: 
+      
+
+
