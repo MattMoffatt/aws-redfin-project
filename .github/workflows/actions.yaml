@@ -30,7 +30,8 @@ jobs:
 
         # run notebook
       - name: redfin notebook
-        run: 
+        run: jupyter execute Redfin_Analysis.ipynb
+
       
 
 
