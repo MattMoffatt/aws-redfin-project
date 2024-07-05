@@ -19,10 +19,10 @@ jobs:
         # locate current repo
       uses: actions/checkout@4
       name: set up Python 3.11.5
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11.5'
-          cache: 'pip' 
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11.5'
+        cache: 'pip' 
       # install dependencies
       run: pip install -r requirements.txt          
       # run notebook
